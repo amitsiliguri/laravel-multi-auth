@@ -81,7 +81,7 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         $this->guard('admin')->logout();
-        if ($request->session()->get('web') != 1) {
+        if (!$request->session()->get('web')) {
             $request->session()->invalidate();
         }
         return redirect('/admin/login');
