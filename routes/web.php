@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('frontend.welcome');
-});
+})->name('front');
 
 Auth::routes();
 
