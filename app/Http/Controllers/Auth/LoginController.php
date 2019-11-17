@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/customer/account';
 
     /**
      * Create a new controller instance.
@@ -47,7 +47,7 @@ class LoginController extends Controller
         }
         return $this->loggedOut($request) ?: redirect('/login');
     }
-    
+
     protected function sendLoginResponse(Request $request)
     {
         $request->session()->regenerate();

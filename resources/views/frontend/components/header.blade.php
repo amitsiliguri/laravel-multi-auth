@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark bg-primary navbar-expand-lg fixed-top">
+<nav class="navbar navbar-dark bg-primary navbar-expand-lg fixed-top shadow">
   <a class="navbar-brand" href="{{ route('front') }}">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -48,6 +48,6 @@
     </ul>
   </div>
 </nav>
-<div style="width:100%;height:56px">
+<div style="width:100%;height:55px">
 
 </div>
