@@ -6,7 +6,7 @@
   	<li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#collapseOne"><span data-feather="book"></span>Catalog</a>
       <div id="collapseOne" class="collapse" data-parent="#accordion">
-          <a class="inner-link" href="{{ route('admin.category.index') }}"><span data-feather="folder"></span>{{ __('Category') }}</a>
+          <a class="inner-link" href="#"><span data-feather="folder"></span>Category</a>
           <a class="inner-link" href="#"><span data-feather="shopping-cart"></span>Products</a>
       </div>
     </li>

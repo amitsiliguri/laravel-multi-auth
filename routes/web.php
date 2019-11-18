@@ -17,14 +17,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::group(['prefix' => 'customer', 'as' => 'customer.'], function () {
-    Route::get('/account', ['as' => 'account', 'uses' => 'HomeController@index']);
-});
+Route::get('/customer/account', 'HomeController@index')->name('customer.account');
+//Route::get('/admin', 'Admin\AdminController@index')->name('admin');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/login', ['as' => 'showlogin', 'uses' => 'Admin\LoginController@index']);
     Route::post('/login', ['as' => 'login', 'uses' => 'Admin\LoginController@login']);
     Route::post('/logout', ['as' => 'logout', 'uses' => 'Admin\LoginController@logout']);
     Route::get('/', ['as' => 'dashboard', 'uses' => 'Admin\AdminController@index']);
-    Route::resource('/category', 'Admin\CategoryController');
 });
