@@ -17,16 +17,17 @@ class CreateCategoriesTable extends Migration
             $table->bigIncrements('id');
             $table->boolean('enable')->default(true);
             $table->string('name');
+            $table->string('slug')->unique();
             $table->boolean('show_short_description')->default(false);
-            $table->text('short_description');
+            $table->text('short_description')->nullable();
             $table->boolean('show_description')->default(false);
-            $table->mediumText('description');
+            $table->mediumText('description')->nullable();
             $table->boolean('full_width_banner')->default(true);
-            $table->string('banner_image');
-            $table->string('meta_title');
-            $table->string('meta_keyword');
-            $table->string('meta_description');
-            $table->string('meta_image');
+            $table->string('banner_image')->nullable();
+            $table->string('meta_title')->nullable();
+            $table->string('meta_keyword')->nullable();
+            $table->string('meta_description')->nullable();
+            $table->string('meta_image')->nullable();
             $table->timestamps();
         });
     }

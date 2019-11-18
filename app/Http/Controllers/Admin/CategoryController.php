@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Category;
 class CategoryController extends Controller
 {
       public function __construct()
@@ -18,7 +18,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-      return view('admin.pages.categories.index');
+      $categories = Category::orderBy('id','desc')->paginate(5);
+      return view('admin.pages.categories.index')->with('categories', $categories);
     }
 
     /**

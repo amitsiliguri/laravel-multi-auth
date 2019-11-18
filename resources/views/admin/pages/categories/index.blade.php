@@ -3,7 +3,6 @@
 <div class="container py-4">
     <div class="row justify-content-center">
         <div class="col-md-12">
-
           <table class="table">
             <thead class="thead-dark">
               <tr>
@@ -14,12 +13,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
+              @foreach($categories as $category)
+                <tr>
+                  <th scope="row">1</th>
+                  <td>{{$category->name}}</td>
+                  <td>{{$category->enable}}</td>
+                  <td>Edit | Delete</td>
+                </tr>
+              @endforeach
             </tbody>
           </table>
 
