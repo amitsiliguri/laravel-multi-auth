@@ -22,7 +22,7 @@ class CreateCategoriesTable extends Migration
             $table->boolean('show_description')->default(false);
             $table->mediumText('description');
             $table->boolean('full_width_banner')->default(true);
-            $table->string('image');
+            $table->string('banner_image');
             $table->string('meta_title');
             $table->string('meta_keyword');
             $table->string('meta_description');
