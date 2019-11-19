@@ -18,11 +18,11 @@ class CreateCategoriesTable extends Migration
             $table->boolean('enable')->default(true);
             $table->string('name');
             $table->string('slug')->unique();
-            $table->boolean('show_short_description')->default(false);
+            $table->boolean('show_short_description')->default(false)->nullable();
             $table->text('short_description')->nullable();
-            $table->boolean('show_description')->default(false);
+            $table->boolean('show_description')->default(false)->nullable();
             $table->mediumText('description')->nullable();
-            $table->boolean('full_width_banner')->default(true);
+            $table->boolean('full_width_banner')->default(true)->nullable();
             $table->string('banner_image')->nullable();
             $table->string('meta_title')->nullable();
             $table->string('meta_keyword')->nullable();
