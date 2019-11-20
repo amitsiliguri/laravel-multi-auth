@@ -15,14 +15,14 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->boolean('enable')->default(true);
+            $table->boolean('enable')->default(1);
             $table->string('name');
             $table->string('slug')->unique();
-            $table->boolean('show_short_description')->default(false)->nullable();
+            $table->boolean('show_short_description')->default(0);
             $table->text('short_description')->nullable();
-            $table->boolean('show_description')->default(false)->nullable();
+            $table->boolean('show_description')->default(0);
             $table->mediumText('description')->nullable();
-            $table->boolean('full_width_banner')->default(true)->nullable();
+            $table->boolean('full_width_banner')->default(1);
             $table->string('banner_image')->nullable();
             $table->string('meta_title')->nullable();
             $table->string('meta_keyword')->nullable();

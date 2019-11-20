@@ -24,4 +24,13 @@ class Category extends Model
   protected $table = 'categories';
   protected $primaryKey = 'id';
   public $timestamps = true;
+  protected static function boot()
+  {
+      parent::boot();
+      static::creating(function ($query) {
+        $query->enable = $query->enable ?? true;
+        $query->show_short_description = $query->show_short_description ?? false;
+        $query->show_description = $query->show_description  ?? false;
+      });
+  }
 }

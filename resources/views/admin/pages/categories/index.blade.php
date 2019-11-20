@@ -15,10 +15,13 @@
             <tbody>
               @foreach($categories as $category)
                 <tr>
-                  <th scope="row">1</th>
+                  <th scope="row">{{$category->id}}</th>
                   <td>{{$category->name}}</td>
                   <td>{{$category->enable}}</td>
-                  <td>Edit | Delete</td>
+                  <td>
+                    <a href="{{ route('admin.category.edit',$category->id) }}">Edit</a> | 
+                    Delete
+                  </td>
                 </tr>
               @endforeach
             </tbody>

@@ -70,7 +70,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -81,7 +81,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('admin.pages.categories.update')->with('category', $category);
     }
 
     /**
