@@ -42,22 +42,41 @@ class CategoryController extends Controller
     {
       $this->validate($request,[
           'name' => 'required',
-          'slug' => 'required|unique:categories'
+          'slug' => 'required|unique:categories',
+          'banner_image' => 'image|nullable|max:500',
+          'meta_image' => 'image|nullable|max:300',
       ]);
+
+      if ($request->hasFile('banner_image')) {
+        $file = $request->file('banner_image');
+        $path = $path = 'public/media/catalog/category/cover';
+        $coverImagetoStore = $this->imageUpload($file, $path);
+      }else {
+        $coverImagetoStore = 'noImage.png';
+      }
+
+      if ($request->hasFile('meta_image')) {
+        $file = $request->file('meta_image');
+        $path = $path = 'public/media/catalog/category/meta';
+        $coverImagetoStore = $this->imageUpload($file, $path);
+      }else {
+        $metaImagetoStore = 'noImage.png';
+      }
+
       $category = new Category;
-      $category->enable = $request->enable;
-      $category->name = $request->name;
-      $category->slug = $request->slug;
+      $category->enable                 = $request->enable;
+      $category->name                   = $request->name;
+      $category->slug                   = $request->slug;
       $category->show_short_description = $request->show_short_description;
-      $category->short_description = $request->short_description;
-      $category->show_description = $request->show_description;
-      $category->description = $request->description;
-      $category->full_width_banner = $request->full_width_banner;
-      $category->meta_title = $request->meta_title;
-      $category->meta_keyword = $request->meta_keyword;
-      $category->meta_description = $request->meta_description;
-      // $category->banner_image = $request->banner_image;
-      // $category->meta_image = $request->meta_image;
+      $category->short_description      = $request->short_description;
+      $category->show_description       = $request->show_description;
+      $category->description            = $request->description;
+      $category->full_width_banner      = $request->full_width_banner;
+      $category->meta_title             = $request->meta_title;
+      $category->meta_keyword           = $request->meta_keyword;
+      $category->meta_description       = $request->meta_description;
+      $category->banner_image           = $coverImagetoStore;
+      $category->meta_image             = $metaImagetoStore;
       $category->save();
       return redirect('/admin/category')->with('success','post created');
     }
@@ -106,5 +125,14 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function imageUpload($file, $path){
+      $getFileNameWithExtension = $file->getClientOriginalName();
+      $fileName = pathinfo($getFileNameWithExtension,PATHINFO_FILENAME);
+      $getFileExtension = $file->getClientOriginalExtension();
+      $coverImagetoStore = $fileName.'_'.time().'.'.$getFileExtension;
+      $path = $file->storeAs($path,$coverImagetoStore);
+      return $coverImagetoStore;
     }
 }
