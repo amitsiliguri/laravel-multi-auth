@@ -58,7 +58,7 @@ class CategoryController extends Controller
       if ($request->hasFile('meta_image')) {
         $file = $request->file('meta_image');
         $path = $path = 'public/media/catalog/category/meta';
-        $coverImagetoStore = $this->imageUpload($file, $path);
+        $metaImagetoStore = $this->imageUpload($file, $path);
       }else {
         $metaImagetoStore = 'noImage.png';
       }
@@ -131,8 +131,8 @@ class CategoryController extends Controller
       $getFileNameWithExtension = $file->getClientOriginalName();
       $fileName = pathinfo($getFileNameWithExtension,PATHINFO_FILENAME);
       $getFileExtension = $file->getClientOriginalExtension();
-      $coverImagetoStore = $fileName.'_'.time().'.'.$getFileExtension;
-      $path = $file->storeAs($path,$coverImagetoStore);
-      return $coverImagetoStore;
+      $imagetoStore = $fileName.'_'.time().'.'.$getFileExtension;
+      $path = $file->storeAs($path,$imagetoStore);
+      return $imagetoStore;
     }
 }
