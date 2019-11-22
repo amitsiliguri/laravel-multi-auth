@@ -19,8 +19,12 @@
                   <td>{{$category->name}}</td>
                   <td>{{$category->enable}}</td>
                   <td>
-                    <a href="{{ route('admin.category.edit',$category->id) }}">Edit</a> | 
-                    Delete
+                    <a href="{{ route('admin.category.edit',$category->id) }}" class="btn btn-link">Edit</a> |
+                    <a href="#" onclick="event.preventDefault();document.getElementById('delete{{$category->id}}').submit();" class="btn btn-link">Delete</a>
+                    <form id="delete{{$category->id}}" action="{{ route('admin.category.destroy',$category->id) }}" method="post" style="display: none;">
+                      @csrf
+                      @method('delete')
+                    </form>
                   </td>
                 </tr>
               @endforeach

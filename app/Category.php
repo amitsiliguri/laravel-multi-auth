@@ -27,8 +27,9 @@ class Category extends Model
   protected static function boot()
   {
       parent::boot();
-      static::creating(function ($query) {
-        $query->enable = $query->enable ?? true;
+      static::saving(function ($query) {
+        $query->enable = $query->enable ?? false;
+        $query->full_width_banner = $query->full_width_banner ?? false;
         $query->show_short_description = $query->show_short_description ?? false;
         $query->show_description = $query->show_description  ?? false;
       });

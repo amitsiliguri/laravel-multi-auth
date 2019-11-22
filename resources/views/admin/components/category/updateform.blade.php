@@ -1,11 +1,11 @@
-<form action="{{ route('admin.category.store') }}" method="POST" enctype='multipart/form-data'>
+<form action="{{ route('admin.category.update',$category->id) }}" method="POST" enctype='multipart/form-data'>
   @csrf
   @method('PUT')
   <div class="form-group row">
     <div class="col-sm-2">Is enabled</div>
     <div class="col-sm-10">
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="isCategoryEnabled" name="enable" value="{{$category->enable}}" checked>
+        <input class="form-check-input" type="checkbox" id="isCategoryEnabled" name="enable" value="1" @if($category->enable) checked @endif>
         <label class="form-check-label" for="isCategoryEnabled">
           Check to yes
         </label>
@@ -28,7 +28,7 @@
     <div class="col-sm-2">Is full width Banner</div>
     <div class="col-sm-10">
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="isFullWidthBanner" name="full_width_banner" value="{{$category->full_width_banner}}" checked>
+        <input class="form-check-input" type="checkbox" id="isFullWidthBanner" name="full_width_banner" value="1" @if($category->full_width_banner) checked @endif>
         <label class="form-check-label" for="isFullWidthBanner">
           Check to yes
         </label>
@@ -36,9 +36,9 @@
     </div>
   </div>
   <div class="input-group row mb-3">
-    <div class="col-sm-2" for="bannerImage">Full width Banner</div>
+    <div class="col-sm-2" for="bannerImage">Banner</div>
     <div class="col-sm-10">
-        <input type="file" class="pl-1" name="banner_image" id="bannerImage" value="{{$category->banner_image}}">
+        <input type="file" class="pl-1" name="banner_image" id="bannerImage">
         @if($category->banner_image)
           <img src="/storage/media/catalog/category/cover/{{$category->banner_image}}" alt="{{$category->name}}" class="img-fluid my-1 ml-1">
         @endIf
@@ -48,7 +48,7 @@
     <div class="col-sm-2">Show short description</div>
     <div class="col-sm-10">
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="isShortDescription" name="show_short_description" value="{{$category->show_short_description}}">
+        <input class="form-check-input" type="checkbox" id="isShortDescription" name="show_short_description" value="1" @if($category->show_short_description) checked @endif>
         <label class="form-check-label" for="isShortDescription">
           Check to yes
         </label>
@@ -65,7 +65,7 @@
     <div class="col-sm-2">Show description</div>
     <div class="col-sm-10">
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="showDescription" name="show_description" value="{{$category->show_description}}">
+        <input class="form-check-input" type="checkbox" id="showDescription" name="show_description" value="1" @if($category->show_description) checked @endif>
         <label class="form-check-label" for="showDescription">
           Check to yes
         </label>
@@ -93,7 +93,7 @@
   <div class="input-group row mb-3">
     <div class="col-sm-2">Meta Image</div>
     <div class="col-sm-10">
-        <input type="file" class="pl-1" id="metaImage" name="meta_image" value="{{$category->meta_image}}">
+        <input type="file" class="pl-1" id="metaImage" name="meta_image">
         @if($category->meta_image)
           <img src="/storage/media/catalog/category/meta/{{$category->meta_image}}" alt="{{$category->meta_title}}" class="img-fluid my-1 ml-1">
         @endIf
