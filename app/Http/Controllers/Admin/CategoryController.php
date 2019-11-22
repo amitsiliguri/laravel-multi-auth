@@ -154,11 +154,11 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::findOrFail($id);
-        if ($category->banner_image != 'noImage.png') {
-          Storage::delete('public/media/catalog/category/cover'.$category->banner_image);
+        if ($category->banner_image != 'noImage.png' && Storage::exists('public/media/catalog/category/cover/'.$category->banner_image)) {
+          Storage::delete('public/media/catalog/category/cover/'.$category->banner_image);
         }
-        if ($category->meta_image != 'noImage.png') {
-          Storage::delete('public/media/catalog/category/meta'.$category->meta_image);
+        if ($category->meta_image != 'noImage.png'  && Storage::exists('public/media/catalog/category/meta/'.$category->meta_image)) {
+          Storage::delete('public/media/catalog/category/meta/'.$category->meta_image);
         }
         $category->delete();
         return redirect('/admin/category')->with('success','post deleted');
