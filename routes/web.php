@@ -26,5 +26,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::post('/login', ['as' => 'login', 'uses' => 'Admin\LoginController@login']);
     Route::post('/logout', ['as' => 'logout', 'uses' => 'Admin\LoginController@logout']);
     Route::resource('/category', 'Admin\CategoryController');
+    Route::resource('/product', 'Admin\ProductController');
     Route::get('/', ['as' => 'dashboard', 'uses' => 'Admin\AdminController@index']);
 });
